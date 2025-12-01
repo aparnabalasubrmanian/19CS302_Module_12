@@ -4,16 +4,15 @@
 To write a C function to perfom push,pop and peek functions in Stack using Linked List.
 
 ## Algorithm
-1.Define a structure Node with a float data type and a pointer to the next node.
-
-2.Implement the push() function to insert a float value at the top of the stack (insert at the beginning of the linked list).
-
-3.Implement the pop() function to remove the top element from the stack and return its value.
-
-4.Implement the peek() function to view the top element without removing it.
-
-5.Use the main() function to demonstrate push, pop, and peek operations.
-
+1.Start.
+2.Define Node structure with float data and next pointer.
+3.Initialize top = NULL.
+4.Call push() to insert elements at top.
+5.If top == NULL, print underflow in pop and exit.
+6.Remove top node using pop(), free memory, update top.
+7.Return top value using peek() without removing node.
+8. peek before and after pop to verify LIFO.
+9.Stop. 
 ## Program:
 ```
 /*

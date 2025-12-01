@@ -1,59 +1,90 @@
-
-# EX 58 C Function to display queue elements using Linked List.(use float data in the queue)
-## DATE: 17.11.2025
+# EX 57 C function to perfom push,pop and peek functions in Stack using Linked List.( store float data in stack)
+## DATE: 23/05/2025
 ## AIM:
-To write a C Function to display queue elements using Linked List.
+To write a C function to perfom push,pop and peek functions in Stack using Linked List.
 
 ## Algorithm
+1.Define a structure Node with a float data type and a pointer to the next node.
 
-1. **Start**  
-2. Define a structure `Node` with two fields:  
-   - `data` (integer type)  
-   - `next` (pointer to the next node)  
-3. Initialize `front` and `rear` pointers:  
-   - `front` points to the first node in the queue  
-   - `rear` points to the last node in the queue  
-4. Check if `front` is `NULL`:  
-   - If `NULL`, print "Queue is empty" and exit.  
-5. Otherwise, create a temporary pointer `temp` pointing to `front`.  
-6. Loop through the queue:  
-   - Print `temp->data`.  
-   - Move `temp` to `temp->next`.  
-7. Continue until `temp` becomes `NULL`.  
-8. **End**  
+2.Implement the push() function to insert a float value at the top of the stack (insert at the beginning of the linked list).
 
-This algorithm efficiently traverses and prints all queue elements using a linked list. Want a full implementation with enqueue and dequeue functions? 🚀
+3.Implement the pop() function to remove the top element from the stack and return its value.
 
+4.Implement the peek() function to view the top element without removing it.
+
+5.Use the main() function to demonstrate push, pop, and peek operations.
 
 ## Program:
 ```
-struct Node
+/*
+function to perfom push,pop and peek functions in Stack using Linked List.( store float data in stack)
+
+Developed by: AASHIKA PARVEEN M R
+RegisterNumber:  212223060002
+*/
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    float data;
+    struct Node* next;
+};
+
+void push(struct Node** top, float value)
 {
-   float data;
-   struct Node *next;
-}*front=NULL,*rear=NULL;
-void display()
-{
-    struct Node *ptr;
-    ptr=front;
-    if(front==NULL)
-    {
-        printf("queue is empty");
-        
-    }
-    else
-    {printf("Queue elements:\n");
-    while(ptr!=0)
-    {
-        printf("%.3f\n",ptr->data);
-        ptr=ptr->next;
-    }}
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = value;
+    newNode->next = *top;
+    *top = newNode;
 }
+
+float pop(struct Node** top)
+{
+    if (*top == NULL)
+    {
+        printf("Stack underflow.\n");
+        return -1;
+    }
+    struct Node* temp = *top;
+    float poppedData = temp->data;
+    *top = (*top)->next;
+    free(temp);
+    return poppedData;
+}
+
+float peek(struct Node* top)
+{
+    if (top == NULL)
+    {
+        printf("Stack is empty.\n");
+        return -1;
+    }
+    return top->data;
+}
+
+int main()
+{
+    struct Node* stack = NULL;
+
+    push(&stack, 10.5);
+    push(&stack, 20.7);
+    push(&stack, 30.9);
+    
+    printf("Top element (peek): %.2f\n", peek(stack));
+
+    printf("Popped element: %.2f\n", pop(&stack));
+    
+    printf("Top element after pop (peek): %.2f\n", peek(stack));
+
+    return 0;
+}
+
+
 ```
 
 ## Output:
-![image](https://github.com/user-attachments/assets/b8dfe2ca-8868-454c-ae0b-769a11eeeaff)
 
+![image](https://github.com/user-attachments/assets/245df9d7-8106-4860-9fe8-a8499826f720)
 
 
 ## Result:
